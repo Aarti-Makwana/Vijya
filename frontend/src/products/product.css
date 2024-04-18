@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: #F8F9FA;
+}
+.profileCircle{
+    border-radius: 50%;
+    height: 8vh;
+    width: 8vh;
+}
+.profileCircle img{
+    border-radius: 50%;
+    height: 8vh;
+    width: 8vh;
+
+}
+.profileBox{
+    border-radius: 4%;
+}
+.subSections :hover{
+   background-color: rgb(206, 230, 238);
+}
+.banner {
+    position: relative; 
+    height: 60vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 3%;
+    z-index: 1; 
+}
+
+.banner-content {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.banner-content h2,
+.banner-content p {
+    color: white;
+}
+
+
+
+.rating {
+    display: inline-block;
+}
+
+.rating input[type="radio"] {
+    display: none;
+}
+
+.rating label {
+    font-size: 2em;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.yellow-star {
+    color: yellow;
+}
+
+.gray-star {
+    color: gray;
+}
+
+.productItems {
+    height: 60vh;
+    width: 100%; 
+    overflow: hidden;
+}
+
+.productItems img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
+
+}
+
+.productsBox {
+    border-radius: 20%;
+}
+
+.smallItemContainer {
+    background-color: #F3F5F7;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    padding: 2px;
+    cursor: pointer;
+    width: 70px; 
+    height: 65px;
+}
+
+.smallItemContainer img {
+    display: block;
+}
+
+.inbox{
+    background-color: #C0E5D9;
+    width: 5vw;
+    border-radius: 8%;
+    color: green;
+}
+
+.mybutton{
+    border: 2px solid black;
+}
+.color-options {
+    display: flex;
+    margin-bottom: 1rem;
+    margin-top: 2%;
+}
+
+.circle {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    /* margin-right: -5px; */
+}
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+    margin-left: 2rem;
+
+}
+
+.green {
+    background-color: green;
+    margin-left: 2rem;
+
+}
