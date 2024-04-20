@@ -3,6 +3,12 @@
     padding: 0;
     background-color: #F8F9FA;
 }
+body{
+    overflow-x: hidden;
+}
+.offcanvas-body::-webkit-scrollbar {
+    width: 0;
+}
 .profileCircle{
     border-radius: 50%;
     height: 8vh;
@@ -12,14 +18,25 @@
     border-radius: 50%;
     height: 8vh;
     width: 8vh;
-
+}
+.profileCircle1{
+    border-radius: 50%;
+    height: 5vh;
+    width: 5vh;
+}
+.profileCircle1 img{
+    border-radius: 50%;
+    height: 5vh;
+    width: 5vh;
 }
 .profileBox{
     border-radius: 4%;
+    background-color: #F3F5F7;
+    border: 2px solid #E7EAEE;
 }
-.subSections :hover{
+/* .subSections :hover{
    background-color: rgb(206, 230, 238);
-}
+} */
 .banner {
     position: relative; 
     height: 60vh;
