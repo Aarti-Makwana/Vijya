@@ -325,10 +325,15 @@ function Products() {
                             <div className="mx-5 rating">
                                 {Array.from({ length: 5 }, (_, index) => (
                                     <span key={index + 1} style={{ marginRight: '5px' }}>
-                                        {index < selectedProduct.ratings ? <i className="fa fa-star yellow-star" style={{ fontSize: '24px' }} /> : <i className="fa fa-star gray-star" style={{ fontSize: '24px' }} />}
+                                        {index < selectedProduct.ratings ?
+                                            <i className="fa fa-star yellow-star" style={{ fontSize: '24px' }} /> :
+                                            <i className="fa fa-star gray-star" style={{ fontSize: '24px' }} />}
                                     </span>
                                 ))}
+                                {/* {selectedProduct && selectedProduct.ratings && <span className='mx-1' style={{ color: "#5B6B79" }}>({selectedProduct.ratings.toFixed(1)})</span>} */}
+                               <span className='mx-1' style={{ color: "#5B6B79" }}>({selectedProduct.ratings}.0)</span>
                             </div>
+
                             <div className="details mx-5">
                                 <h4 className="mb-3">{selectedProduct.heading}</h4>
                                 <span className="p-1 mt-3 inbox">In Stock</span>
