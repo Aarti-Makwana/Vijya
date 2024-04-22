@@ -1,5 +1,6 @@
 import './product.css';
-import { useEffect, useState } from 'react';
+import './slider.css';
+import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import trolly from '../images/trolly.png';
 import banner from '../images/banner.jpg';
@@ -9,6 +10,10 @@ function Products() {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState({});
     const [selectedImage, setSelectedImage] = useState();
+    const [scrollPosition, setScrollPosition] = useState(0);
+
+    const containerRef = useRef();
+
 
     useEffect(() => {
         clickItems();
@@ -25,11 +30,18 @@ function Products() {
         }
     };
 
+    const handleScroll = (scrollAmount) => {
+        const newScrollPosition = scrollPosition + scrollAmount;
+        setScrollPosition(newScrollPosition);
+        containerRef.current.scrollLeft = newScrollPosition;
+    };
+
     const handleSmallImageClick = (product) => {
         console.log("product : ", product.image);
         setSelectedProduct(product);
         setSelectedImage(product.image);
     };
+
 
     return (
         <>
@@ -308,20 +320,39 @@ function Products() {
                                 </div>
                                 <div className="mycrousel my-3">
                                     <div className="row">
-                                        {products.map((product, index) => (
-                                            <div className="col col-lg-3 col-md-6 col-6" key={index}>
-                                                <div className="smallItemContainer" onClick={() => handleSmallImageClick(product)}>
-                                                    <img src={`http://localhost:4000/${product.image}`} alt="Loaded...." height="70" />
+                                        <div className="container scrollContainer">
+                                            <i className="fa fa-chevron-left leftNextIcon" onClick={() => handleScroll(-200)}></i>
+                                            <i className="fa fa-chevron-right rightNextIcon" onClick={() => handleScroll(200)}></i>
+                                            <div
+                                                ref={containerRef}
+                                                style={{
+                                                    width: "25vw",
+                                                    overflowX: "scroll",
+                                                    scrollBehavior: "smooth",
+                                                    overflowY: "hidden",
+                                                    WebkitOverflowScrolling: "touch",
+                                                    scrollbarWidth: "none",
+                                                    MsOverflowStyle: "none"
+                                                }}
+                                            >
+                                                <div className="content-box myBox">
+                                                    {products.map((product, index) => (
+                                                        <div className="col col-lg-3 col-md-6 col-6" key={index}>
+                                                            <div className="smallItemContainer" onClick={() => handleSmallImageClick(product)}>
+                                                                <img src={`http://localhost:4000/${product.image}`} alt="Loaded...." height="70" />
+                                                            </div>
+                                                        </div>
+                                                    ))}
+
                                                 </div>
                                             </div>
-                                        ))}
-
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                        <div className="col col-lg-7  col-md-6 col-12 my-3">
+                        <div className="col col-lg-7  col-md-6 col-12 my-3" style={{ color: "#5B6B79" }}>
                             <div className="mx-5 rating">
                                 {Array.from({ length: 5 }, (_, index) => (
                                     <span key={index + 1} style={{ marginRight: '5px' }}>
@@ -331,7 +362,7 @@ function Products() {
                                     </span>
                                 ))}
                                 {/* {selectedProduct && selectedProduct.ratings && <span className='mx-1' style={{ color: "#5B6B79" }}>({selectedProduct.ratings.toFixed(1)})</span>} */}
-                               <span className='mx-1' style={{ color: "#5B6B79" }}>({selectedProduct.ratings}.0)</span>
+                                <span className='mx-1'>({selectedProduct.ratings}.0)</span>
                             </div>
 
                             <div className="details mx-5">
